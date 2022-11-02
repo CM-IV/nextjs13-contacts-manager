@@ -1,0 +1,75 @@
+@import "./bulma.min.css";
+
+html,
+body {
+  padding: 0;
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
+    Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+  background-color: #f0f0f0;
+  height: 100vh;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+@media (prefers-color-scheme: dark) {
+    html {
+      color-scheme: dark;
+    }
+    body {
+      color: white;
+      background: black;
+    }
+}
+
+.hero {
+  margin-top: 5rem;
+}
+
+.tile {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 110%;
+  flex-direction: column;
+}
+
+nav {
+  width: 110%;
+}
+
+@media (min-width: 1000px) {
+  .tile {
+    flex-direction: row;
+    flex-wrap: wrap;
+    width: 100%;
+  }
+}
+
+
+.navbar-burger-toggle + .navbar-burger {
+  margin-top: -3.25em;
+}
+
+.navbar-burger-toggle:checked + .navbar-burger span:nth-child(1) {
+  transform: translateY(5px) rotate(45deg);
+}
+
+.navbar-burger-toggle:checked + .navbar-burger span:nth-child(2) {
+  opacity: 0;
+}
+
+.navbar-burger-toggle:checked + .navbar-burger span:nth-child(3) {
+  transform: translateY(-5px) rotate(-45deg);
+}
+
+.navbar-burger-toggle:checked ~ .navbar-menu {
+  display: block;
+}
