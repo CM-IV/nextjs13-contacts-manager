@@ -21,8 +21,8 @@ export default async function ContactPage({ params }: any) {
 
     return (
         <>
-            <h1 className="title">{contact.id}'s Contact Page</h1>
-            <p>{contact.name}</p>
+            <h1 className="title">{contact.name}'s Contact Page</h1>
+            <p>{contact.id}</p>
             <p>{contact.workplace}</p>
         </>
     )
