@@ -12,7 +12,7 @@ export default function Nav() {
         <div className="navbar-brand">
           <a className="image is-48x48 mt-1" href="/">
             <img
-              src="https://ik.imagekit.io/xbkhabiqcy9/img/Occident_Tech_logo_wyOOeI6Bhcn.png?updatedAt=1637081403933"
+              src="https://ik.imagekit.io/xbkhabiqcy9/img/saasczar_g0Yhd-5hH.webp?ik-sdk-version=javascript-1.4.3&updatedAt=1667482868923"
               height="48"
               width="48"
               className="image-responsive"

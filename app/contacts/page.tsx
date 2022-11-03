@@ -1,4 +1,5 @@
 import Link from "next/link";
+import CreateContact from "../(components)/createContact";
 
 interface Contacts {
     id: string;
@@ -11,7 +12,7 @@ async function fetchContacts() {
     
     const res = await fetch('http://localhost:8090/api/collections/contacts/records');
     const contactsData = await res.json();
-    return contactsData!.items as Contacts[];
+    return contactsData?.items as Contacts[];
 
 }
 
@@ -29,7 +30,7 @@ export default async function ContactsListPage() {
             </section>
             <section className="section">
                 <div className="tile is-ancestor">
-                    {contacts!.map((c: Contacts) => {
+                    {contacts?.map((c: Contacts) => {
                         return (
                             <div className="tile is-4 is-parent" key={c.id}>
                                 <div className="tile is-child box">
@@ -43,6 +44,10 @@ export default async function ContactsListPage() {
                         )
                     })}
                 </div>
+            </section>
+            <section className="section">
+                <h2 className="subtitle">Create a Contact</h2>
+                <CreateContact />
             </section>
         </>
     )

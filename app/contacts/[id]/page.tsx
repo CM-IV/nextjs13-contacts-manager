@@ -23,6 +23,7 @@ export default async function ContactPage({ params }: any) {
         <>
             <h1 className="title">{contact.name}'s Contact Page</h1>
             <p>{contact.id}</p>
+            <p>{contact.date_of_birth}</p>
             <p>{contact.workplace}</p>
         </>
     )
