@@ -1,9 +1,4 @@
-interface Contacts {
-    id: string;
-    name: string;
-    date_of_birth: string;
-    workplace: string;
-}
+import DeleteContact from "../../(components)/deleteContact";
 
 async function getContact(contactId: string) {
     const res = await fetch(
@@ -16,15 +11,37 @@ async function getContact(contactId: string) {
     return data;
 }
 
+
 export default async function ContactPage({ params }: any) {
     const contact = await getContact(params.id);
 
     return (
         <>
-            <h1 className="title">{contact.name}'s Contact Page</h1>
-            <p>{contact.id}</p>
-            <p>{contact.date_of_birth}</p>
-            <p>{contact.workplace}</p>
+            <section className="section">
+                <h1 className="title">{contact.name}'s Contact Page</h1>
+            </section>
+            <section className="section">
+                <h2 className="subtitle">Contact Information</h2>
+                <div className="box">
+                    <div className="field">
+                        <label className="label">Name</label>
+                        <p>{contact.name}</p>
+                    </div>
+                    <div className="field">
+                        <label className="label">Email</label>
+                        <p>{contact.email}</p>
+                    </div>
+                    <div className="field">
+                        <label className="label">Date of Birth</label>
+                        <p>{contact.date_of_birth}</p>
+                    </div>
+                    <div className="field">
+                        <label className="label">Workplace</label>
+                        <p>{contact.workplace}</p>
+                    </div>
+                    <DeleteContact />
+                </div>
+            </section>
         </>
     )
 
