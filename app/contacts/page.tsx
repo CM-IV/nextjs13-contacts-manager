@@ -10,7 +10,7 @@ interface Contacts {
 
 async function fetchContacts() {
     
-    const res = await fetch('http://localhost:8090/api/collections/contacts/records',
+    const res = await fetch(`http://localhost:8090/api/collections/contacts/records?page=1&perPage=3`,
         { cache: 'no-store' }
     );
     const contactsData = await res.json();
@@ -21,6 +21,7 @@ async function fetchContacts() {
 export default async function ContactsListPage() {
 
     const contacts = await fetchContacts();
+
 
     return (
         <>

@@ -18,8 +18,8 @@ export default function DeleteContact() {
             },
         })
     
-        router.back();
         router.refresh();
+        router.back();
     }
 
     return (
