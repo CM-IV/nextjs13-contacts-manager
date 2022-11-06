@@ -1,13 +1,18 @@
 import DeleteContact from "../../(components)/deleteContact";
 import Link from "next/link";
+import { db } from "../../(db)/pbInit"
+
+export const dynamic = 'auto',
+  dynamicParams = true,
+  revalidate = 10,
+  fetchCache = 'auto',
+  runtime = 'nodejs',
+  preferredRegion = 'auto'
 
 async function getContact(contactId: string) {
-    const res = await fetch(
-        `http://localhost:8090/api/collections/contacts/records/${contactId}`, {
-            cache: "no-store"
-        }
-    );
-    const data = await res.json();
+
+    const data = db.records.getOne("contacts", contactId)
+
     return data;
 }
 

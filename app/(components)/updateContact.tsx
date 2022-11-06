@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
+import { db } from "../(db)/pbInit";
 
 export default function UpdateContact({ data }: any) {
 
@@ -25,19 +26,14 @@ export default function UpdateContact({ data }: any) {
 
     async function patchContact() {
 
-        await fetch(`http://localhost:8090/api/collections/contacts/records/${data.id}`, {
-            method: 'PATCH',
-            headers: {
-                'Content-Type': 'application/json',
-            },
-            body: JSON.stringify({
-                name: name,
-                email: email,
-                date_of_birth: date_of_birth,
-                workplace: workplace
-            }),
-    
-        });
+        const bodyData = {
+            name: name,
+            email: email,
+            date_of_birth: date_of_birth,
+            workplace: workplace
+        }
+
+        await db.records.update("contacts", data.id, bodyData);
 
         router.refresh();
         router.back();

@@ -1,13 +1,18 @@
-import UpdateContact from "../../../(components)/updateContact"
+import UpdateContact from "../../../(components)/updateContact";
+import { db } from "../../../(db)/pbInit"
+
+export const dynamic = 'force-dynamic',
+  dynamicParams = true,
+  revalidate = 0,
+  fetchCache = 'auto',
+  runtime = 'nodejs',
+  preferredRegion = 'auto'
 
 
 async function getContact(contactId: string) {
-    const res = await fetch(
-        `http://localhost:8090/api/collections/contacts/records/${contactId}`, {
-            cache: "no-store"
-        }
-    );
-    const data = await res.json();
+
+    const data = db.records.getOne("contacts", contactId);
+    
     return data;
 }
 

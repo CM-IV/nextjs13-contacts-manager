@@ -1,9 +1,12 @@
 'use client';
 
 import { Doughnut, Pie, Radar } from 'react-chartjs-2';
+import { Chart as ChartJS, ArcElement } from "chart.js";
 import { dummyPieData } from '../(data)/dummyPieData';
 import { dummyDoughnutData } from '../(data)/dummyDoughnutData';
 import { dummyRadarData } from '../(data)/dummyRadarData';
+
+ChartJS.register(ArcElement);
 
 export default function GraphComponent() {
     return (

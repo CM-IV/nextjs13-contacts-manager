@@ -2,6 +2,7 @@
 
 import { useRouter } from 'next/navigation';
 import { usePathname } from 'next/navigation';
+import { db } from "../(db)/pbInit";
 
 export default function DeleteContact() {
 
@@ -11,12 +12,7 @@ export default function DeleteContact() {
 
     async function delContact() {
     
-        await fetch(`http://localhost:8090/api/collections/contacts/records/${urlId}`, {
-            method: 'DELETE',
-            headers: {
-                'Content-Type': 'application/json',
-            },
-        })
+        await db.records.delete("contacts", urlId);
     
         router.refresh();
         router.back();

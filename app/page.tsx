@@ -1,6 +1,6 @@
 import GraphComponent from "./(components)/graphComponent";
 
-export default function Home() {
+export default async function Home() {
 
   return (
     <>
@@ -10,7 +10,7 @@ export default function Home() {
           </h1>
       </section>
       <section className="section">
-        <GraphComponent />
+        <GraphComponent/>
       </section>
     </>
   )

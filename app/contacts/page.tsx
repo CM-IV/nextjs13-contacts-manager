@@ -1,27 +1,25 @@
 import Link from "next/link";
+import { Record } from "pocketbase";
 import CreateContact from "../(components)/createContact";
+import { db } from "../(db)/pbInit"
 
-interface Contacts {
-    id: string;
-    name: string;
-    date_of_birth: string;
-    workplace: string;
-}
+export const dynamic = 'force-dynamic',
+  dynamicParams = true,
+  revalidate = 0,
+  fetchCache = 'auto',
+  runtime = 'nodejs',
+  preferredRegion = 'auto'
 
 async function fetchContacts() {
-    
-    const res = await fetch(`http://localhost:8090/api/collections/contacts/records?page=1&perPage=3`,
-        { cache: 'no-store' }
-    );
-    const contactsData = await res.json();
-    return contactsData?.items as Contacts[];
+
+    const contactsData = await db.records.getFullList("contacts", 500);
+    return contactsData as Record[];
 
 }
 
 export default async function ContactsListPage() {
 
     const contacts = await fetchContacts();
-
 
     return (
         <>
@@ -32,7 +30,7 @@ export default async function ContactsListPage() {
             </section>
             <section className="section">
                 <div className="tile is-ancestor">
-                    {contacts?.map((c: Contacts) => {
+                    {contacts?.map((c: Record) => {
                         return (
                             <div className="tile is-4 is-parent" key={c.id}>
                                 <div className="tile is-child box">

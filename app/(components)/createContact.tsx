@@ -2,29 +2,27 @@
 
 import { useState } from "react";
 import { useRouter } from "next/navigation";
+import { db } from "../(db)/pbInit";
+
 
 export default function CreateContact() {
     const [name, setName] = useState<string>("");
     const [email, setEmail] = useState<string>("");
-    const [dob, setDob] = useState<string>("");
+    const [date_of_birth, setDob] = useState<string>("");
     const [workplace, setWorkplace] = useState<string>("");
 
     const router = useRouter();
 
     const makeContact = async () => {
-        await fetch("http://localhost:8090/api/collections/contacts/records", {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-            },
-            body: JSON.stringify({
-                name: name,
-                email: email,
-                date_of_birth: dob,
-                workplace: workplace
-            }),
-    
-        });
+
+        const bodyData = {
+            name: name,
+            email: email,
+            date_of_birth: date_of_birth,
+            workplace: workplace
+        }
+
+        await db.records.create("contacts", bodyData);
 
         router.refresh();
     }

@@ -4,14 +4,18 @@ specifiers:
   '@types/node': ^18.11.9
   '@types/react': ^18.0.24
   '@types/react-dom': ^18.0.8
-  chart.js: ^3.4.1
+  chart.js: ^3.9.1
   eslint: ^8.26.0
   eslint-config-next: ^13.0.1
   next: ^13.0.1
+  pocketbase: ^0.7.4
   react: ^18.2.0
-  react-chartjs-2: ^3.0.3
+  react-chartjs-2: 3.2.0
   react-dom: ^18.2.0
   typescript: ^4.8.4
+
+dependencies:
+  pocketbase: 0.7.4
 
 devDependencies:
   '@types/node': 18.11.9
@@ -22,7 +26,7 @@ devDependencies:
   eslint-config-next: 13.0.1_wyqvi574yv7oiwfeinomdzmc3m
   next: 13.0.1_biqbaboplfbrettd7655fr4n2y
   react: 18.2.0
-  react-chartjs-2: 3.3.0_2unjvz6v6rskedwoxtmbfw2rje
+  react-chartjs-2: 3.2.0_2unjvz6v6rskedwoxtmbfw2rje
   react-dom: 18.2.0_react@18.2.0
   typescript: 4.8.4
 
@@ -1547,6 +1551,10 @@ packages:
     engines: {node: '>=8.6'}
     dev: true
 
+  /pocketbase/0.7.4:
+    resolution: {integrity: sha512-PvBRi4hbgbiBwDjhHa9lGD/ala8dSTjKeNAsHAgsXdIo4v9RgCk2s3Zqd/4UXVBgTJHVM6F7fGOZPvvJfSNVLQ==}
+    dev: false
+
   /postcss/8.4.14:
     resolution: {integrity: sha512-E398TUmfAYFPBSdzgeieK2Y1+1cpdxJx8yXbK/m57nRhKSmk1GB2tO4lbLBtlkfPQTDKfe4Xqv1ASWPpayPEig==}
     engines: {node: ^10 || ^12 || >=14}
@@ -1578,8 +1586,8 @@ packages:
     resolution: {integrity: sha512-NuaNSa6flKT5JaSYQzJok04JzTL1CA6aGhv5rfLW3PgqA+M2ChpZQnAC8h8i4ZFkBS8X5RqkDBHA7r4hej3K9A==}
     dev: true
 
-  /react-chartjs-2/3.3.0_2unjvz6v6rskedwoxtmbfw2rje:
-    resolution: {integrity: sha512-4Mt0SR2aiUbWi/4762odRBYSnbNKSs4HWc0o3IW43py5bMfmfpeZU95w6mbvtuLZH/M3GsPJMU8DvDc+5U9blQ==}
+  /react-chartjs-2/3.2.0_2unjvz6v6rskedwoxtmbfw2rje:
+    resolution: {integrity: sha512-UFedkfhOriqyslqYMrdK225TdxFq6YSmGJVQplLC37eoKBfbpkJHxVq+SPMpoVY2oV9fx33RrD4Obv0wKZtclw==}
     peerDependencies:
       chart.js: ^3.5.0
       react: ^16.8.0 || ^17.0.0
