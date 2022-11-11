@@ -1,7 +1,7 @@
 import Link from "next/link";
-import { Record } from "pocketbase";
 import CreateContact from "../(components)/createContact";
-import { db } from "../(db)/pbInit"
+import { db } from "../(db)/pbInit";
+import type { Contact } from "../../types";
 
 export const dynamic = 'force-dynamic',
   dynamicParams = true,
@@ -11,15 +11,16 @@ export const dynamic = 'force-dynamic',
   preferredRegion = 'auto'
 
 async function fetchContacts() {
-
-    const contactsData = await db.records.getFullList("contacts", 500);
-    return contactsData as Record[];
+ 
+    const contactsData = await db.collection('contacts').getFullList<Contact>();
+    return contactsData as Contact[];
 
 }
 
 export default async function ContactsListPage() {
 
     const contacts = await fetchContacts();
+    console.log(contacts);
 
     return (
         <>
@@ -30,7 +31,7 @@ export default async function ContactsListPage() {
             </section>
             <section className="section">
                 <div className="tile is-ancestor">
-                    {contacts?.map((c: Record) => {
+                    {contacts?.map((c: Contact) => {
                         return (
                             <div className="tile is-4 is-parent" key={c.id}>
                                 <div className="tile is-child box">

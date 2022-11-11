@@ -33,10 +33,15 @@ export default function UpdateContact({ data }: any) {
             workplace: workplace
         }
 
-        await db.records.update("contacts", data.id, bodyData);
+        try {
+            await db.collection("contacts").update(data.id, bodyData);
 
-        router.refresh();
-        router.back();
+            router.refresh();
+            router.back();
+        } catch (error) {
+            console.log(error);
+        }
+
     }
 
     return (

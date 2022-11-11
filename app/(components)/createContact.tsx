@@ -22,9 +22,17 @@ export default function CreateContact() {
             workplace: workplace
         }
 
-        await db.records.create("contacts", bodyData);
+        try {
+            await db.collection("contacts").create(bodyData);
 
-        router.refresh();
+            router.refresh();
+        } catch (error) {
+            console.log(error);
+            /*@ts-ignore*/
+            console.log(error.isAbort);
+        }
+
+        
     }
 
     return (

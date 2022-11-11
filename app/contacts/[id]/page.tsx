@@ -1,6 +1,7 @@
 import DeleteContact from "../../(components)/deleteContact";
 import Link from "next/link";
-import { db } from "../../(db)/pbInit"
+import type { Contact } from "../../../types";
+import { db } from "../../(db)/pbInit";
 
 export const dynamic = 'auto',
   dynamicParams = true,
@@ -11,21 +12,20 @@ export const dynamic = 'auto',
 
 async function getContact(contactId: string) {
 
-    const data = db.records.getOne("contacts", contactId)
+    const data = await db.collection("contacts").getOne<Contact>(contactId);
 
-    return data;
+    return data as Contact;
 }
 
 
 export default async function ContactPage({ params }: any) {
     const contact = await getContact(params.id);
+    console.log(contact)
 
     return (
         <>
-            <section className="section">
+            <section className="section section-divider">
                 <h1 className="title">{contact.name}'s Contact Page</h1>
-            </section>
-            <section className="section">
                 <div className="box">
                     <div className="field">
                         <label className="label">Name</label>

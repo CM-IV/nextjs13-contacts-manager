@@ -8,14 +8,22 @@ export default function DeleteContact() {
 
     const router = useRouter();
     const pathname = usePathname();
-    const urlId = pathname.split("/")[2].substring(0, 36);
+    const urlId = pathname!.split("/")[2].substring(0, 36);
 
     async function delContact() {
+
+        try {
+            await db.collection("contacts").delete(urlId);
     
-        await db.records.delete("contacts", urlId);
-    
-        router.refresh();
-        router.back();
+            router.back();
+
+            router.refresh();
+            
+        } catch (error) {
+            console.log("Error: ", error);
+            /*@ts-ignore*/
+            console.log(error.isAbort);
+        }
     }
 
     return (

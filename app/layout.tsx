@@ -1,5 +1,9 @@
 import './(styles)/global.css'
 import Nav from './(components)/nav'
+import { Roboto_Mono } from '@next/font/google';
+
+
+const roboto = Roboto_Mono({ subsets: ["latin"] });
 
 export default function RootLayout({
   children,
@@ -14,7 +18,7 @@ export default function RootLayout({
         <meta name="viewport" content="width=device-width" />
         <link rel="icon" href="/favicon.ico" />
       </head>
-      <body>
+      <body className={roboto.className}>
         <Nav />
         <div className="container">
           <div className="columns is-centered">
